@@ -3,10 +3,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Chart Project (Versión JSF)</title>
     </h:head>
     <h:body>
-        Hello from Facelets
+        <h1>Pagina principal</h1>
+        <pre>
+  ,----..    ,---,                            ___      
+ /   /   \ ,--.' |                          ,--.'|_    
+|   :     :|  |  :                 __  ,-.  |  | :,'   
+.   |  ;. /:  :  :               ,' ,'/ /|  :  : ' :   
+.   ; /--` :  |  |,--.  ,--.--.  '  | |' |.;__,'  /    
+;   | ;    |  :  '   | /       \ |  |   ,'|  |   |     
+|   : |    |  |   /' :.--.  .-. |'  :  /  :__,'| :     
+.   | '___ '  :  | | | \__\/: . .|  | '     '  : |__  
+'   ; : .'||  |  ' | : ," .--.; |;  : |     |  | '.'| 
+'   | '/  :|  :  :_:,'/  /  ,.  ||  , ;     ;  :    ; 
+|   :    / |  | ,'   ;  :   .'   \---'      |  ,   /  
+ \   \ .'  `--''     |  ,     .-./           ---`-'   
+  `---`               `--`---'                       
+        </pre>
+        <form action="loginServlet" method="post">
+            Usuario: <input type="text" size="20" name="usuario"/>
+            Contrase&ntilde;a: <input type="password" size="20" name="password"/>
+            <input type="submit" value="Log in">
+        </form>
+        <h6><a href="registro.jsp">Registro</a>    <a href="recuperarContrasena.jsp">Olvid&eacute; mi contrase&ntilde;a</a></h6>
+            <%sesion.removeAttribute("retorno");%>
     </h:body>
 </html>
 
