@@ -6,7 +6,7 @@
 package cp.entity;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
+import java.math.BigDecimal; 
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;

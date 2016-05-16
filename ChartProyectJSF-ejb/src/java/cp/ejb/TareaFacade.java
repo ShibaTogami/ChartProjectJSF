@@ -8,7 +8,7 @@ package cp.ejb;
 import cp.entity.Tarea;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContext; 
 
 /**
  *

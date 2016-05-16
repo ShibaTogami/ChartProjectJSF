@@ -19,7 +19,7 @@ public class ComentarioFacade extends AbstractFacade<Comentario> {
 
     @PersistenceContext(unitName = "ChartProject-ejbPU")
     private EntityManager em;
-
+ 
     @Override
     protected EntityManager getEntityManager() {
         return em;

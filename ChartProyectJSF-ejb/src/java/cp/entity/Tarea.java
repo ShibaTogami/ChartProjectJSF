@@ -10,7 +10,7 @@ import java.math.BigInteger;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
+import javax.persistence.EmbeddedId; 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
