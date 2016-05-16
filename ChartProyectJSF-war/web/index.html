@@ -6,11 +6,33 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Chart Project (Versión JSF)</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
+        <h1>Pagina principal</h1>
+        <pre>
+  ,----..    ,---,                            ___      
+ /   /   \ ,--.' |                          ,--.'|_    
+|   :     :|  |  :                 __  ,-.  |  | :,'   
+.   |  ;. /:  :  :               ,' ,'/ /|  :  : ' :   
+.   ; /--` :  |  |,--.  ,--.--.  '  | |' |.;__,'  /    
+;   | ;    |  :  '   | /       \ |  |   ,'|  |   |     
+|   : |    |  |   /' :.--.  .-. |'  :  /  :__,'| :     
+.   | '___ '  :  | | | \__\/: . .|  | '     '  : |__  
+'   ; : .'||  |  ' | : ," .--.; |;  : |     |  | '.'| 
+'   | '/  :|  :  :_:,'/  /  ,.  ||  , ;     ;  :    ; 
+|   :    / |  | ,'   ;  :   .'   \---'      |  ,   /  
+ \   \ .'  `--''     |  ,     .-./           ---`-'   
+  `---`               `--`---'                       
+        </pre>
+        <form action="loginServlet" method="post">
+            Usuario: <input type="text" size="20" name="usuario"/>
+            Contrase&ntilde;a: <input type="password" size="20" name="password"/>
+            <input type="submit" value="Log in">
+        </form>
+        <h6><a href="registro.jsp">Registro</a>    <a href="recuperarContrasena.jsp">Olvid&eacute; mi contrase&ntilde;a</a></h6>
+            <%sesion.removeAttribute("retorno");%>
     </body>
 </html>
