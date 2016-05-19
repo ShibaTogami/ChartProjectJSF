@@ -37,7 +37,4 @@ public class TareaBean {
     public void setTarea(Tarea tarea) {
         this.tarea = tarea;
     }
-
-
-    
 }
