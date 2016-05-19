@@ -16,12 +16,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.bean.ManagedBean;
 
 /**
  *
  * @author shiba
  */
-@Named(value = "proyectoBean")
+@ManagedBean
 @SessionScoped
 public class ProyectoBean implements Serializable {
 
