@@ -22,13 +22,13 @@
  \   \ .'  `--''     |  ,     .-./           ---`-'   
   `---`               `--`---'                       
         </pre>
-        <form action="loginServlet" method="post">
-            Usuario: <input type="text" size="20" name="usuario"/><h:inputText size="20"> 
-            Contrase&ntilde;a: <input type="password" size="20" name="password"/>
-            <input type="submit" value="Log in">
-        </form>
-        <h6><a href="registro.jsp">Registro</a><a href="recuperarContrasena.jsp">Olvid&eacute; mi contrase&ntilde;a</a></h6>
-            <%sesion.removeAttribute("retorno");%>
+        <h:form>
+            Usuario: <h:inputText size="20" value="#{usuarioBean.usuarioIntroducido}"/><br/> 
+            Contrase&ntilde;a: <h:inputSecret size="20" value="#{usuarioBean.passwordIntroducido}"/><br/>
+            <h:commandButton  action="#{usuarioBean.doLoguear()}" value="Log in"/> 
+        </h:form>
+        <h6><a href="registro.jsp">Registro</a>  <a href="recuperarContrasena.jsp">Olvid&eacute; mi contrase&ntilde;a</a></h6>
+            
     </h:body>
 </html>
 
