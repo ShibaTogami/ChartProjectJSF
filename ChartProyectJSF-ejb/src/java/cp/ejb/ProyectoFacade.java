@@ -34,23 +34,11 @@ public class ProyectoFacade extends AbstractFacade<Proyecto> {
     
 
     public Proyecto findByIdProyecto (BigDecimal idProyecto) {
-        Query q;
-
+       Query q;
+       //Modelar para que si no encuentra devuelva null o algo así
        q = em.createNamedQuery("Proyecto.findByIdProyecto");
        q.setParameter("idProyecto", idProyecto);
        return (Proyecto)q.getSingleResult();
-    }
-    
-    public BigDecimal findMaxId() {
-        Query q;
-        
-        q = em.createQuery("select max(p.idProyecto) from Proyecto p");
-        
-        if(q.getSingleResult() != null) {
-            return (BigDecimal)q.getSingleResult();
-        } else {
-            return new BigDecimal(1);
-        }
     }
     
 }
