@@ -5,6 +5,7 @@
  */
 package cp.bean;
 
+import cp.entity.Usuario;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import java.io.Serializable;
@@ -20,7 +21,19 @@ public class UsuarioBean implements Serializable {
     /**
      * Creates a new instance of UsuarioBean
      */
+    
+    protected Usuario usuarioLogueado;
+    
     public UsuarioBean() {
+        
+    }
+
+    public Usuario getUsuarioLogueado() {
+        return usuarioLogueado;
+    }
+
+    public void setUsuarioLogueado(Usuario usuarioLogueado) {
+        this.usuarioLogueado = usuarioLogueado;
     }
     
 }
