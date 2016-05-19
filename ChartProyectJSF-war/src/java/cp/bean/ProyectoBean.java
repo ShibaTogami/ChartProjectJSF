@@ -45,5 +45,10 @@ public class ProyectoBean implements Serializable {
     public void setProyectoSeleccionado(BigDecimal idProyecto) {
         this.proyectoSeleccionado = proyectoFacade.findByIdProyecto(idProyecto);
     }
+    
+    public String doMostrar(BigDecimal idProyecto) {
+        this.setProyectoSeleccionado(idProyecto);
+        return "proyecto";
+    }
      
 }

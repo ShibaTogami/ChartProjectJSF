@@ -42,7 +42,4 @@ public class ProyectoCrearBean {
         proyectoFacade.create(proyecto);
         return "principal";
     }
-    
-    
-    
 }
