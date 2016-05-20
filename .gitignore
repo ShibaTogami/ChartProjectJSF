@@ -4,3 +4,6 @@
 /build/
 /ChartProyectJSF-war/dist/
 /dist/
+/nbproject/private/
+/ChartProyectJSF-war/nbproject/private/
+/ChartProyectJSF-ejb/nbproject/private/
