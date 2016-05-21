@@ -8,32 +8,43 @@
     </h:head>
     <h:body>
         <h:form>
-            <h1>Perfil de #{usuarioBean.usuarioSeleccionado.nickname}</h1>
-            Usuario: #{usuarioBean.usuarioSeleccionado.nickname}
-            Email: #{usuarioBean.usuarioSeleccionado.email}
-            Web: #{usuarioBean.usuarioSeleccionado.webPersonal}
-            Miembro desde: #{usuarioBean.usuarioSeleccionado.fechaRegistro}
-            Ultima conexión: #{usuarioBean.usuarioSeleccionado.ultimaConexion}
-            Karma: #{usuarioBean.usuarioSeleccionado.karma}
+            <h1>Perfil de #{usuarioBean.usuario.nickname}</h1>
+            Usuario: #{usuarioBean.usuario.nickname}<br/>
+            Email: #{usuarioBean.usuario.email}<br/>
+            Web: #{usuarioBean.usuario.webPersonal}<br/>
+            Miembro desde: #{usuarioBean.usuario.fechaRegistro}<br/>
+            Ultima conexión: #{usuarioBean.usuario.ultimaConexion}<br/>
+            Karma: #{usuarioBean.usuario.karma}<br/>
+            <h:commandButton value="Logout" action="#{usuarioBean.doLogout()}"/><br/><br/>
             
-            <h:dataTable value="#{usuarioBean.usuarioSeleccionado.proyectoCollection}" var="proyectos">
+            <h:dataTable value="#{usuarioBean.usuario.proyectoCollection}" var="proyectos" border="1">
                 <h:column>
                     <f:facet name="header">
                         Proyectos
                     </f:facet>
-                    #{proyectos.nombre}
+                    <h:commandLink value="#{proyectos.nombre}" action="#{proyectoBean.doMostrar(proyectos.idProyecto)}"/>
                 </h:column>
             </h:dataTable>
             <br/>
-            <h:dataTable value="#{usuarioBean.usuarioSeleccionado.proyectoCollection1}" var="lidera">
+            <h:dataTable value="#{usuarioBean.usuario.proyectoCollection1}" var="lidera" border="1">
                 <h:column>
                     <f:facet name="header">
                         Lidera
                     </f:facet>
-                    #{lidera.nombre}
+                    <h:commandLink value="#{lidera.nombre}" action="#{proyectoBean.doMostrar(lidera.idProyecto)}"/>
+                </h:column>
+            </h:dataTable>
+            <br/>
+            <h:dataTable value="#{usuarioBean.usuario.comentarioCollection}" var="comentarios">
+                <h:column>
+                    <f:facet name="header">
+                        Comentarios y actividad del usuario
+                    </f:facet>
+                    #{comentarios.texto}
                 </h:column>
             </h:dataTable>
         </h:form>
+        <h:link value="Volver a principal" outcome="index"/>
     </h:body>
 </html>
 
