@@ -36,7 +36,11 @@ public class UsuarioBean implements Serializable {
     protected String emailIntroducido2; //repeticion del email para controlar errores
     protected String preguntaSecretaIntroducida; //pregunta de seguridad para recuperar contraseña en registro
     protected String respuestaSecretaIntroducida; //respuesta para recuperar contraseña en registor
+    protected String errorLogin; //contendra el texto del error por el cual el login puede fallar
+    protected String errorRegistro; //contendrá el texto a mostrar en caso de error al registrarse
     public UsuarioBean() {
+        errorLogin="";
+        errorRegistro="";
     }
 
     public Usuario getUsuario() {
@@ -106,22 +110,32 @@ public class UsuarioBean implements Serializable {
     public String doLoguear()
     {
         String redireccion = null;
-        Usuario user = usuarioFacade.find(this.usuarioIntroducido);
+        Usuario user = usuarioFacade.getUsuarioPorNickname(this.usuarioIntroducido);
         if (passwordMalicioso()) //si hay caracteres maliciosos en el password
         {
+            errorLogin = "Error: La contraseña contiene caracteres no permitidos";
             redireccion = "index.xhtml";
         }
         else //comprobamos el pass con el del usuario recuperado de la BD
         {
-            //si coincide
-            if (user.getPassword().equals(this.passwordIntroducido))
+            if (user==null) //si no se ha encontrado al usuario.
             {
-                this.usuario = user;
-                redireccion = "principal.xhtml";
-            }
-            else //si no coincide
-            {
+                errorLogin="El usuario Introducido no existe";
                 redireccion = "index.xhtml";
+            }
+            else
+            {
+                //si el usuario existe y los passwords coinciden
+                if (user.getPassword().equals(this.passwordIntroducido))
+                {
+                    this.usuario = user;
+                    redireccion = "principal.xhtml";
+                }
+                else //si no coincide
+                {
+                    errorLogin = "Error: La contraseña es incorrecta";
+                    redireccion = "index.xhtml";
+                }
             }
             //vaciamos datos irrelevantes. Obtenibles desde usuario.
             this.usuarioIntroducido=null;
@@ -133,42 +147,60 @@ public class UsuarioBean implements Serializable {
     public String doRegistrar()
     {
         String salida="";
-        if (!passwordMalicioso()) //si el password no es malicioso
-        {
-            if (comprobarPassword()) //y coincide
+        if (usuarioFacade.getUsuarioPorNickname(usuarioIntroducido)==null) //si el usuario es nuevo
+        {    
+            if (!passwordMalicioso()) //si el password no es malicioso
             {
-                if (comprobarEmail()) //comprobamos el email y si coincide
+                if (comprobarPassword()) //y coincide
                 {
-                    //registramos
-                    usuario = new Usuario(usuarioIntroducido,passwordIntroducido,new Date(),emailIntroducido);
-                    usuario.setPregunta(preguntaSecretaIntroducida);
-                    usuario.setRespuesta(respuestaSecretaIntroducida);
-                    usuario.setUltimaConexion(new Date());
-                    usuarioFacade.create(usuario);
-                    salida = "principal.xhtml";
+                    if (comprobarEmail()) //comprobamos el email y si coincide
+                    {
+                        //registramos
+                        usuario = new Usuario(usuarioIntroducido,passwordIntroducido,new Date(),emailIntroducido);
+                        usuario.setPregunta(preguntaSecretaIntroducida);
+                        usuario.setRespuesta(respuestaSecretaIntroducida);
+                        usuario.setUltimaConexion(new Date());
+                        usuarioFacade.create(usuario);
+                        salida = "principal.xhtml";
+                    }
+                    else
+                    {
+                        //indicar error al usuario
+                        errorRegistro="Error: El email Introducido no se ha repetido correctamente";
+                        salida = "registro.xhtml";
+                    }
                 }
                 else
                 {
                     //indicar error al usuario
+                    errorRegistro = "Error: Las constraseñas introducidas no coinciden";
                     salida = "registro.xhtml";
                 }
             }
-            else
+            else 
             {
                 //indicar error al usuario
+                errorRegistro = "Error: La contraseña introducida contiene caracteres no permitidos";
                 salida = "registro.xhtml";
             }
         }
-        else 
+        else
         {
-            //indicar error al usuario
+            errorRegistro = "Error: Ese usuario ya había sido registrado.";
             salida = "registro.xhtml";
         }
         return salida;
     }
 
-    private boolean passwordMalicioso() {
-        return false;
+    private boolean passwordMalicioso() { //metodo que comprueba la presencia de caracteres
+        //maliciosos en el password introducido
+        boolean salida = false; //empezamos dando por hecho que no los contiene
+        for (char aux : passwordIntroducido.toCharArray()) {
+            if (aux == '\'' || aux == '"' || aux == '+' || aux == '-' || aux == '*' || aux == '/' || aux == '%') {
+                salida = true; //si se encuentra con algun caracter no permitido se actualiza la variable
+            }
+        }
+        return salida;
     }
 
     private boolean comprobarPassword() {
@@ -178,6 +210,22 @@ public class UsuarioBean implements Serializable {
 
     private boolean comprobarEmail() {
         return emailIntroducido.equals(emailIntroducido2);
+    }
+
+    public String getErrorLogin() {
+        return errorLogin;
+    }
+
+    public void setErrorLogin(String errorLogin) {
+        this.errorLogin = errorLogin;
+    }
+
+    public String getErrorRegistro() {
+        return errorRegistro;
+    }
+
+    public void setErrorRegistro(String errorRegistro) {
+        this.errorRegistro = errorRegistro;
     }
 
     
