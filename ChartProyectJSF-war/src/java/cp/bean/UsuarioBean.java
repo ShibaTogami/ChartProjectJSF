@@ -103,4 +103,14 @@ public class UsuarioBean implements Serializable {
         
         return "/index.xhtml";    
     }
+    
+    public void control(){
+        if(usuario == null){
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("index.xhtml");
+            } catch (IOException ex) {
+                Logger.getLogger(UsuarioBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
 }
