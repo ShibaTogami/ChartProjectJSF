@@ -17,7 +17,7 @@ import javax.persistence.PersistenceContext;
 @Stateless
 public class TareaFacade extends AbstractFacade<Tarea> {
 
-    @PersistenceContext(unitName = "ChartProject-ejbPU")
+    @PersistenceContext(unitName = "persistence")
     private EntityManager em;
 
     @Override

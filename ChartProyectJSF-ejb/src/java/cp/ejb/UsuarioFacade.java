@@ -19,7 +19,7 @@ import javax.persistence.Query;
 @Stateless
 public class UsuarioFacade extends AbstractFacade<Usuario> {
 
-    @PersistenceContext(unitName = "ChartProject-ejbPU")
+    @PersistenceContext(unitName = "persistence")
     private EntityManager em;
 
     @Override

@@ -64,7 +64,7 @@ public class UsuarioBean implements Serializable {
         Usuario user = usuarioFacade.find(this.usuarioIntroducido);
         if (passwordMalicioso()) //si hay caracteres maliciosos en el password
         {
-            redireccion = "/index.xhtml";
+            redireccion = "index.xhtml";
         }
         else //comprobamos el pass con el del usuario recuperado de la BD
         {
@@ -72,11 +72,11 @@ public class UsuarioBean implements Serializable {
             if (user.getPassword().equals(this.passwordIntroducido))
             {
                 this.usuario = user;
-                redireccion = "/principal.xhtml";
+                redireccion = "principal.xhtml";
             }
             else //si no coincide
             {
-                redireccion = "/index.xhtml";
+                redireccion = "index.xhtml";
             }
             //vaciamos datos irrelevantes. Obtenibles desde usuario.
             this.usuarioIntroducido=null;
@@ -86,7 +86,7 @@ public class UsuarioBean implements Serializable {
     }
 
     private boolean passwordMalicioso() {
-        return true;
+        return false;
     }
 
     
