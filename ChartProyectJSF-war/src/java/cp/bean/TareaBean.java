@@ -56,11 +56,8 @@ public class TareaBean {
         this.tarea = tarea;
     }
     
-    public String doEncontrarTarea(BigInteger idTarea, BigInteger idProyecto){
-        TareaPK tareaPK = new TareaPK(idTarea, idProyecto);
-        tarea = this.tareaFacade.find(tareaPK);
-        BigDecimal idProy = new BigDecimal(idProyecto.toString());
-        proyecto = this.proyectoFacade.findByIdProyecto(idProy);
+    public String doEncontrarTarea(Tarea tarea){
+        this.setTarea(tarea);
         return "tarea";
     }
     
