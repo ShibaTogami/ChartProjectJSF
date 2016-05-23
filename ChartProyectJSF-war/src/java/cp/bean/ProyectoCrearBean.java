@@ -13,19 +13,28 @@ import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 /**
  *
  * @author pablo
  */
 @ManagedBean
-@RequestScoped
+@SessionScoped
 public class ProyectoCrearBean {
 
     @EJB
     private ProyectoFacade proyectoFacade;
     
-    Proyecto proyecto;
+    protected Proyecto proyecto;
+
+    public Proyecto getProyecto() {
+        return proyecto;
+    }
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
+    }
     /**
      * Creates a new instance of ProyectoCrearBean
      */
