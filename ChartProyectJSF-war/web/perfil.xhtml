@@ -6,6 +6,7 @@
     <h:head>
         <title>Perfil de usuario</title>
     </h:head>
+    #{usuarioBean.control()}
     <h:body>
         <h:form>
             <h1>Perfil de #{usuarioBean.usuario.nickname}</h1>
@@ -44,7 +45,7 @@
                 </h:column>
             </h:dataTable>
         </h:form>
-        <h:link value="Volver a principal" outcome="index"/>
+        <h:link value="Volver a principal" outcome="principal"/>
     </h:body>
 </html>
 
