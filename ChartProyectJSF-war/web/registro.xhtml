@@ -18,6 +18,7 @@
             <br/>Respuesta Secreta: <h:inputText size="20" value="#{usuarioBean.respuestaSecretaIntroducida}"/>
             <br/><h:commandButton  action="#{usuarioBean.doRegistrar()}" value="Enviar"/>
         </h:form>
+        #{usuarioBean.setErrorRegistro("")}
     </h:body>
 </html>
 
