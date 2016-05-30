@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Crear/Editar Tarea</title>
+    </h:head>
+    <h:body>
+        <h1>Edición de tarea</h1>
+        ID de Tarea: #{tareaBean.tarea.tareaPK.idTarea}<br/>
+        ID de Proyecto: #{tareaBean.tarea.tareaPK.idProyecto}<br/>
+        Nombre: <h:inputText value="#{tareaBean.tarea.nombre}"/><br/>
+        Descripci&oacute;n: <h:inputText value="#{tareaBean.tarea.descripcion}"/><br/>
+        Estado: <h:selectOneMenu value="#{tareaBean.tarea.estado}">
+            <f:selectItem value="To Do"/>
+            <f:selectItem value="In Process"/>
+            <f:selectItem value="Done"/>
+            <f:selectItem value="Testing"/>
+        </h:selectOneMenu><br/>
+        Prioridad: <h:selectOneMenu value="#{tareaBean.tarea.prioridad}">
+            <f:selectItem value="1"/>
+            <f:selectItem value="2"/>
+            <f:selectItem value="3"/>
+        </h:selectOneMenu><br/>
+        <h:commandButton value="Guardar" action="#{tareaBean.doGuardar()}"/>
+    </h:body>
+</html>
+

@@ -6,6 +6,7 @@
 package cp.ejb;
 
 import cp.entity.Usuario;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -44,4 +45,12 @@ public class UsuarioFacade extends AbstractFacade<Usuario> {
                 
         return salida;
     }
+     
+    public List<Usuario> getUsuarioPorNicknameParecido(String busqueda){
+        List<Usuario> resultado;
+        Query q = em.createNamedQuery("Usuario.findByNicknameParecido");
+        q.setParameter("nickname","%"+ busqueda+"%");
+        resultado = q.getResultList();
+        return resultado;
+    } 
 }
